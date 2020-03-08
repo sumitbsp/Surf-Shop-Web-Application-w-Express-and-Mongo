@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title: String,
     price: String,
-    description: [ String ],
+    description: String,
+    images: [ String ],
     location: String,
     lat: Number,
     lng: Number,
@@ -12,10 +13,12 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    reviews: {
-        type: Schema.Types.ObjectId,
-        ref: 'Review'
-    }
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Post', PostSchema);
